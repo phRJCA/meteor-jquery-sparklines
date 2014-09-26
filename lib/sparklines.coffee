@@ -5,33 +5,30 @@
 
 # ##### created()
 Template.sparkline.created = ->
-  templateInstance = @
-  instantiatedComponent = templateInstance.__component__
-  instantiatedComponent.log "created", @
-  instantiatedComponent.prepareSelector()
-  instantiatedComponent.prepareStyles()
-  instantiatedComponent.prepareOptions()
-  instantiatedComponent.prepareType()
-  instantiatedComponent.prepareLoadingMessage()
-  instantiatedComponent.prepareDataSeries()
+  Template.sparkline.templateInstance = @
+
+  Template.sparkline.log "created", @
+  Template.sparkline.prepareSelector()
+  Template.sparkline.prepareStyles()
+  Template.sparkline.prepareOptions()
+  Template.sparkline.prepareType()
+  Template.sparkline.prepareLoadingMessage()
+  Template.sparkline.prepareDataSeries()
 
 # ##### rendered()
 # When the component is first rendered datatables is initialized `templateInstance.__component__` is the this context
 Template.sparkline.rendered = ->
-  templateInstance = @
-  instantiatedComponent = templateInstance.__component__
-  instantiatedComponent.log "rendered", @
-  instantiatedComponent.initialize()
+  Template.sparkline.log "rendered", @
+  Template.sparkline.initialize()
 
 # ##### destroyed()
 # Currently nothing is done when the component is destroyed.
 Template.sparkline.destroyed = ->
-  templateInstance = @
-  templateInstance.__component__.log "destroyed", @
+  Template.sparkline.log "destroyed", @
 
 Template.sparkline.initialize = ->
   #===== Sparkline charts =====//
-  $( ".#{ @getSelector() }" ).sparkline @getDataSeries(), @getOptions()
+  Template.instance().$("div").sparkline @getDataSeries(), @getOptions()
 
   # Activate hidden Sparkline on tab show
   $("a[data-toggle=\"tab\"]").on "shown.bs.tab", -> $.sparkline_display_visible()
@@ -193,11 +190,12 @@ Template.sparkline.getGuid = ->
 
 # ##### getData()
 Template.sparkline.getData = ->
-  return @getTemplateInstance().data or false
+  return Template.currentData() or false
+  # return @getTemplateInstance().data or false
 
 # ##### setData()
 Template.sparkline.setData = ( key, data ) ->
-  @templateInstance.data[ key ] = data
+  Template.currentData()[ key ] = data
   @log "#{ key }:set", data
 
 # ##### isDomSource()

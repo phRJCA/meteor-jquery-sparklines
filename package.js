@@ -1,5 +1,9 @@
 Package.describe({
-    summary: "A reactive blaze component for rendering live jQuery Sparklines."
+    summary: "A reactive blaze component for rendering live jQuery Sparklines.",
+    version: '1.1.0',
+    git: 'https://github.com/benmgreene/meteor-jquery-sparklines',
+    name: "benmgreene:meteor-jquery-sparklines"
+
 });
 
 Package.on_use(function (api) {
