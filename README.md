@@ -55,7 +55,7 @@ $ mrt add jquery-sparklines
 
 ### To run example locally
 ```
-$ git clone git://github.com/lumapictures/meteor-jquery-sparklines.git
+$ git clone git://github.com/phRJCA/meteor-jquery-sparklines.git
 $ cd meteor-jquery-sparklines/example
 $ mrt
 $ meteor

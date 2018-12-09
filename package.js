@@ -2,21 +2,21 @@ Package.describe({
     summary: "A reactive blaze component for rendering live jQuery Sparklines.",
     version: '1.1.0',
     git: 'https://github.com/benmgreene/meteor-jquery-sparklines',
-    name: "benmgreene:jquery-sparklines"
+    name: "phRJCA:jquery-sparklines"
 
 });
 
 Package.on_use(function (api) {
   api.use([
-    'coffeescript@1.0.3'
+    'coffeescript'
   ],['client', 'server']);
 
   // for helpers
   api.use([
-    'jquery@1.0.0',
-    'ui@1.0.3',
-    'templating@1.0.7',
-    'spacebars@1.0.2'
+    'jquery',
+    'ui',
+    'templating',
+    'spacebars'
   ], 'client');
 
   api.add_files([
